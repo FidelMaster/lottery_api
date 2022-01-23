@@ -1,0 +1,2 @@
+class AwardTabulator < ApplicationRecord
+end

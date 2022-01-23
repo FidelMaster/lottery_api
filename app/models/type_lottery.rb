@@ -1,0 +1,2 @@
+class TypeLottery < ApplicationRecord
+end

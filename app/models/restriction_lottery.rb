@@ -1,0 +1,2 @@
+class RestrictionLottery < ApplicationRecord
+end
