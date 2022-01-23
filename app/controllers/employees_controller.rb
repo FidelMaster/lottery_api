@@ -7,4 +7,31 @@ class EmployeesController < ApplicationController
     render json: alldata
   end
 
+  #POST /employee
+  def create
+    user = User.new
+    user.email = params[:email]
+    user.encrypted_password = params[:password]
+    user.admin = false
+    
+    if !user.save
+        render json: user.errors, status: :unprocessable_entity
+    end
+
+    employee = Employee.new
+    employee.user_id = user.id
+    employee.dni = params[:dni]
+    employee.full_name = params[:full_name]
+    employee.cellphone = params[:cellphone]
+ 
+    if employee.save
+        render json: {
+            status: {code: 200, message: 'Vendedor creado correctamente.'}
+          }, status: :ok
+    else
+      render json: employee.errors, status: :unprocessable_entity
+    end
+
+  end
+
 end
