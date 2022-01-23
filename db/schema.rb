@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_23_182950) do
+ActiveRecord::Schema.define(version: 2022_01_23_193205) do
 
   create_table "award_tabulators", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "price"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2022_01_23_182950) do
     t.string "cellphone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "employee_id"
+    t.index ["employee_id"], name: "index_employees_on_employee_id"
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(version: 2022_01_23_182950) do
   end
 
   create_table "type_lotteries", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "type"
+    t.string "type_name"
     t.boolean "status"
   end
 
@@ -79,4 +81,5 @@ ActiveRecord::Schema.define(version: 2022_01_23_182950) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "employees", "employees"
 end

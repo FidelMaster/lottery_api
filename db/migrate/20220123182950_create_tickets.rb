@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration[6.0]
       t.references :lottery
       t.integer :number
       t.integer :amount
-      t.string :client_name
+      t.string  :client_name
 
       t.timestamps
     end
